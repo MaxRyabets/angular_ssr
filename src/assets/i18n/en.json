@@ -1,0 +1,13 @@
+{
+  "HOME" : {
+    "TITLE": "Title",
+    "DESCRIPTION": "Description"
+  },
+  "BUTTON": {
+    "LANG": {
+      "EN": "English",
+      "UA": "Ukrainian",
+      "RU": "Russian"
+    }
+  }
+}
