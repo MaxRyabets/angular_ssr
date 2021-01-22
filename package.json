@@ -11,7 +11,8 @@
     "dev:ssr": "ng run angular-ssr:serve-ssr",
     "serve:ssr": "node dist/angular-ssr/server/main.js",
     "build:ssr": "ng build --prod && ng run angular-ssr:server:production",
-    "prerender": "ng run angular-ssr:prerender"
+    "prerender": "ng run angular-ssr:prerender",
+    "locale": "ng xi18n --output-path=src/locale"
   },
   "private": true,
   "dependencies": {
