@@ -13,11 +13,19 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ua": "src/locale/messages.ua.xlf",
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-ssr/browser",
+            "localize": ["ua", "en"],
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -33,6 +41,12 @@
             "scripts": []
           },
           "configurations": {
+            "ua": {
+              "baseHref": "/ua/messages.ua.xlf"
+            },
+            "en": {
+              "baseHref": "/en/messages.en.xlf"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -71,6 +85,12 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-ssr:build:production"
+            },
+            "ua": {
+              "browserTarget": "angular-ssr:build:ua"
+            },
+            "en": {
+              "browserTarget": "angular-ssr:build:en"
             }
           }
         },
@@ -126,9 +146,10 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/angular-ssr/server",
+            "outputPath": "dist/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json",
+            "localize": ["en", "ua"]
           },
           "configurations": {
             "production": {
@@ -141,6 +162,12 @@
               ],
               "sourceMap": false,
               "optimization": true
+            },
+            "ua": {
+              "i18nLocale": "src/locale/messages.ua.xlf"
+            },
+            "en": {
+              "i18nLocale": "src/locale/messages.en.xlf"
             }
           }
         },
@@ -160,7 +187,7 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "angular-ssr:build:production",
+            "Target": "angular-ssr:build:production",
             "serverTarget": "angular-ssr:server:production",
             "routes": [
               "/"

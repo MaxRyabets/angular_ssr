@@ -9,10 +9,12 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run angular-ssr:serve-ssr",
-    "serve:ssr": "node dist/angular-ssr/server/main.js",
-    "build:ssr": "ng build --prod && ng run angular-ssr:server:production",
+    "serve:ssr": "node server.run.js",
     "prerender": "ng run angular-ssr:prerender",
-    "locale": "ng xi18n --output-path=src/locale"
+    "locale": "ng xi18n --output-path=src/locale",
+    "build:ssr:all": "npm run build:ssr:ua && npm run build:ssr:en",
+    "build:ssr:ua": "ng build --configuration=production,ua && ng run angular-ssr:server:production --configuration=production,ua",
+    "build:ssr:en": "ng build --configuration=production,en && ng run angular-ssr:server:production --configuration=production,en"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "@angular/router": "~10.1.2",
     "@nguniversal/express-engine": "^10.1.0",
     "express": "^4.15.2",
+    "prettier": "^2.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
