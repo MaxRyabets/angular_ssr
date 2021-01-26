@@ -16,7 +16,7 @@ import { isPlatformBrowser } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  isBrowser: boolean;
+  isBrowser = false;
   slides$: Observable<Image[]> = this.sliderService.getSlides();
 
   // [size screen, count slides]
