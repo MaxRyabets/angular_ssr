@@ -12,9 +12,7 @@
     "serve:ssr": "node server.run.js",
     "prerender": "ng run angular-ssr:prerender",
     "locale": "ng xi18n --output-path=src/locale",
-    "build:ssr:all": "npm run build:ssr:ua && npm run build:ssr:en",
-    "build:ssr:ua": "ng build --configuration=production,ua && ng run angular-ssr:server:production --configuration=production,ua",
-    "build:ssr:en": "ng build --configuration=production,en && ng run angular-ssr:server:production --configuration=production,en"
+    "build:ssr": "ng build --prod && ng run angular-ssr:server:production"
   },
   "private": true,
   "dependencies": {

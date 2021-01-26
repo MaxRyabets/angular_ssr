@@ -14,10 +14,9 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
+        "sourceLocale": "en",
         "locales": {
           "ua": "src/locale/messages.ua.xlf",
-          "en": "src/locale/messages.en.xlf"
         }
       },
       "architect": {
@@ -41,13 +40,9 @@
             "scripts": []
           },
           "configurations": {
-            "ua": {
-              "baseHref": "/ua/messages.ua.xlf"
-            },
-            "en": {
-              "baseHref": "/en/messages.en.xlf"
-            },
+
             "production": {
+              "localize": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -148,12 +143,12 @@
           "options": {
             "outputPath": "dist/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "localize": ["en", "ua"]
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "production": {
               "outputHashing": "media",
+              "localize": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -162,12 +157,6 @@
               ],
               "sourceMap": false,
               "optimization": true
-            },
-            "ua": {
-              "i18nLocale": "src/locale/messages.ua.xlf"
-            },
-            "en": {
-              "i18nLocale": "src/locale/messages.en.xlf"
             }
           }
         },
@@ -195,6 +184,18 @@
           },
           "configurations": {
             "production": {}
+          }
+        },
+        "xliffmerge": {
+          "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+          "options": {
+            "xliffmergeOptions": {
+              "i18nFormat": "xlf",
+              "srcDir": "src/i18n",
+              "genDir": "src/i18n",
+              "defaultLanguage": "en",
+              "languages": ["en", "ua"]
+            }
           }
         }
       }

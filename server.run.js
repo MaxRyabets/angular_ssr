@@ -1,41 +1,25 @@
 const express = require("express");
 const path = require("path");
 
-function app() {
-  const server = express();
-
-  const appServerModule = require(path.join(
-    __dirname,
-    "dist",
-    "server",
-    "en",
-    "main.js"
-  ));
-
-  server.get("/", appServerModule.app("en"));
-
-  ["ua"].forEach((locale) => {
-    const appServerModule = require(path.join(
-      __dirname,
-      "dist",
-      "server",
-      locale,
-      "main.js"
-    ));
-
-    server.use(`/${locale}`, appServerModule.app(locale));
-  });
-
-  server.get("/", (req, res) => {
-    res.redirect("ua");
-  });
-
-  return server;
-}
+const getTranslatedServer = (lang) => {
+  const distFolder = path.join(process.cwd(), `dist/server/${lang}`);
+  const server = require(`${distFolder}\\main.js`);
+  return server.app(lang);
+};
 
 function run() {
-  app().listen(4200, () => {
-    console.log(`Node Express server listening on http://localhost:4200`);
+  const port = process.env.PORT || 4200;
+
+  const appFr = getTranslatedServer("ua");
+  const appEn = getTranslatedServer("en");
+
+  const server = express();
+  server.use("/ua", appFr);
+  server.use("/en", appEn);
+  server.use("", appEn);
+
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
 
