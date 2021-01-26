@@ -13,6 +13,7 @@ import { Breakpoint } from './breakpoint';
   selector: 'app-infinite-loop-slider',
   templateUrl: './infinite-loop-slider.component.html',
   styleUrls: ['./infinite-loop-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfiniteLoopSliderComponent implements AfterViewInit {
   private readonly defaultBreakPoints = new Map([
