@@ -17,13 +17,14 @@
         "sourceLocale": "en",
         "locales": {
           "ua": "src/locale/messages.ua.xlf",
+          "ru": "src/locale/messages.ru.xlf"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": ["ua", "en"],
+            "localize": ["ua", "en", "ru"],
             "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -86,6 +87,9 @@
             },
             "en": {
               "browserTarget": "angular-ssr:build:en"
+            },
+            "ru": {
+              "browserTarget": "angular-ssr:build:ru"
             }
           }
         },
@@ -194,7 +198,7 @@
               "srcDir": "src/i18n",
               "genDir": "src/i18n",
               "defaultLanguage": "en",
-              "languages": ["en", "ua"]
+              "languages": ["en", "ua", "ru"]
             }
           }
         }

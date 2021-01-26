@@ -10,11 +10,13 @@ const getTranslatedServer = (lang) => {
 function run() {
   const port = process.env.PORT || 4200;
 
-  const appFr = getTranslatedServer("ua");
+  const appUa = getTranslatedServer("ua");
   const appEn = getTranslatedServer("en");
+  const appRu = getTranslatedServer("ru");
 
   const server = express();
-  server.use("/ua", appFr);
+  server.use("/ua", appUa);
+  server.use("/ru", appRu);
   server.use("/en", appEn);
   server.use("", appEn);
 

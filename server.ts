@@ -52,12 +52,14 @@ export function app(lang: string): Express {
 function run(): void {
   const port = process.env.PORT || 4200;
 
-  const appFr = app('ua');
+  const appUa = app('ua');
   const appEn = app('en');
+  const appRu = app('ru');
 
   const server = express();
-  server.use('/ua', appFr);
+  server.use('/ua', appUa);
   server.use('/en', appEn);
+  server.use('/ru', appRu);
   server.use('', appEn);
 
   server.listen(port, () => {
