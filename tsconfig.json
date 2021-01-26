@@ -15,6 +15,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@expansion-list": ["src/app/expansion-list/*"]
+    }
   }
 }

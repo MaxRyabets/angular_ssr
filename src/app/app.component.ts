@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { Image } from './image';
 import { SliderService } from './slider.service';
 import { Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +16,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  isBrowser: boolean;
   slides$: Observable<Image[]> = this.sliderService.getSlides();
 
   // [size screen, count slides]
@@ -23,5 +30,10 @@ export class AppComponent {
 
   delay = 5000;
 
-  constructor(private readonly sliderService: SliderService) {}
+  constructor(
+    @Inject(PLATFORM_ID) platformId: object,
+    private readonly sliderService: SliderService
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 }
