@@ -56,4 +56,36 @@
     </app-item-body>
   </app-item>
 </app-expansion-list>
+<app-infinite-loop-slider
+  [breakpoints]="breakpoints"
+  [delay]="delay"
+>
+  <app-slide *ngFor="let slide of slides$ | async">
+    <a class="swiper-link" target="_blank" href="{{slide.link}}">
+      <img [src]="slide.image" [alt]="slide.name"/>
+    </a>
+  </app-slide>
+</app-infinite-loop-slider>
+
+<app-infinite-loop-slider
+  class="container-background-slide"
+  [breakpoints]="breakpoints"
+  [delay]="delay"
+>
+  <app-slide>
+    <app-background-slide></app-background-slide>
+  </app-slide>
+  <app-slide>
+    <app-background-slide></app-background-slide>
+  </app-slide>
+  <app-slide>
+    <app-background-slide></app-background-slide>
+  </app-slide>
+  <app-slide>
+    <app-background-slide></app-background-slide>
+  </app-slide>
+  <app-slide>
+    <app-background-slide></app-background-slide>
+  </app-slide>
+</app-infinite-loop-slider>
 
