@@ -1,0 +1,28 @@
+.item-header-title {
+  width: 25%;
+}
+
+.item-header-description {
+  width: 50%;
+}
+
+.item-header-icon {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  max-height: 20px;
+  font-size: 30px;
+}
+
+.item-header-icon ::ng-deep div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item-header-icon ::ng-deep div > *{
+  display: flex;
+  height: 20px;
+  align-items: center;
+}
+
+
