@@ -2,8 +2,14 @@ const express = require("express");
 const path = require("path");
 
 const getTranslatedServer = (lang) => {
-  const distFolder = path.join(process.cwd(), `dist/server/${lang}`);
-  const server = require(`${distFolder}\\main.js`);
+  const distFolder = path.join(
+    process.cwd(),
+    "dist",
+    "server",
+    lang,
+    "main.js"
+  );
+  const server = require(distFolder);
   return server.app(lang);
 };
 
