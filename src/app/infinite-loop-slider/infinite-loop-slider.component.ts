@@ -21,7 +21,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Represents a infinite loop slider.
- * This component needed for init swiper and he uses
+ * This component provides init swiper and he uses
  * user setting or default if are they present.
  * @constructor
  * @param {ElementRef} elementRef - The element reference of the component

@@ -45,6 +45,15 @@ import { AnimationState } from './animation-state';
     ]),
   ],
 })
+/**
+ * Represents a item body.
+ * This component provides showing and hiding animation.
+ * If item component has attribute disabled then ignore update status.
+ *
+ * @constructor
+ * @param {ItemComponent} itemComponent - The instance of the item component
+ * @param {ChangeDetectorRef} changeDetectorRef - The abstract class of the ChangeDetectorRef
+ */
 export class ItemBodyComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject();
 

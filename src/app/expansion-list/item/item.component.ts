@@ -15,7 +15,7 @@ import { ItemState } from './item-state';
 /**
  * Represents a item from list.
  * This component is wrapper for item-header/item-body and
- * needed for save state open/close if click on item
+ * provide save state open/close if click on item
  * for show/hide animation in body component.
  * If item has attribute disabled then ignore update status.
  */
