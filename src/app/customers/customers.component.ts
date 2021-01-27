@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-customers',
@@ -7,7 +8,16 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomersComponent implements OnInit {
-  constructor() {}
+  title = 'Angular 10 Universal Example';
 
-  ngOnInit(): void {}
+  constructor(private titleService: Title, private metaService: Meta) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle(this.title);
+    this.metaService.addTags([
+      { name: 'keywords', content: 'Angular, Universal, Example' },
+      { name: 'description', content: 'Angular Universal Example' },
+      { name: 'robots', content: 'index, follow' },
+    ]);
+  }
 }
