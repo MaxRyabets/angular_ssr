@@ -24,7 +24,6 @@ import { isPlatformBrowser } from '@angular/common';
  * @constructor
  * @param {ElementRef} elementRef - The element reference of the component
  * @param {any} platformId - The platformId of the server/browser platform
- *
  */
 export class InfiniteLoopSliderComponent implements AfterViewInit {
   private readonly defaultBreakPoints = new Map([

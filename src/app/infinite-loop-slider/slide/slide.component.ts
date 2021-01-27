@@ -6,6 +6,10 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
   styleUrls: ['./slide.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+/**
+ * Represents a slide
+ */
 export class SlideComponent {
   @HostBinding('class.swiper-slide') isSwiperSlide = true;
 }

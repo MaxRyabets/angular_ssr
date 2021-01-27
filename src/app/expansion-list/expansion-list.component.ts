@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './expansion-list.component.html',
   styleUrls: ['./expansion-list.component.scss'],
 })
+
+/**
+ * Represents a item from list.
+ * This component is wrapper for items
+ */
 export class ExpansionListComponent {}

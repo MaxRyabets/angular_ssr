@@ -12,6 +12,13 @@ import { ItemState } from './item-state';
   styleUrls: ['./item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+/**
+ * Represents a item from list.
+ * This component is wrapper for item-header/item-body and
+ * needed for save state open/close if click on item
+ * for show/hide animation in body component.
+ * If item has attribute disabled then ignore update status.
+ */
 export class ItemComponent {
   private state: BehaviorSubject<
     ItemState.Close | ItemState.Open

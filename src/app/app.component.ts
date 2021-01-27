@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  /**
+   * A set of slides for each slide component separately
+   */
   slides$: Observable<Image[]> = this.sliderService.getSlides();
 
   // [size screen, count slides]
