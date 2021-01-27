@@ -57,7 +57,7 @@
     </app-item-body>
   </app-item>
 </app-expansion-list>
-<app-infinite-loop-slider *ngIf="isBrowser"
+<app-infinite-loop-slider
   [breakpoints]="breakpoints"
   [delay]="delay"
 >
@@ -68,8 +68,7 @@
   </app-slide>
 </app-infinite-loop-slider>
 
-<app-infinite-loop-slider *ngIf="isBrowser"
-                          class="container-background-slide"
+<app-infinite-loop-slider class="container-background-slide"
   [breakpoints]="breakpoints"
   [delay]="delay"
 >

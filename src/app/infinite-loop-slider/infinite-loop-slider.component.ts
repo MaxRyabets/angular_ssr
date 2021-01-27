@@ -3,11 +3,14 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Inject,
   Input,
+  PLATFORM_ID,
 } from '@angular/core';
 import SwiperCore, { Autoplay, Navigation } from 'swiper/core';
 import Swiper from 'swiper';
 import { Breakpoint } from './breakpoint';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-infinite-loop-slider',
@@ -27,17 +30,21 @@ export class InfiniteLoopSliderComponent implements AfterViewInit {
   @Input() breakpoints: Map<number, number>;
   @Input() delay: number;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(
+    private readonly elementRef: ElementRef,
+    @Inject(PLATFORM_ID) private readonly platformId: any
+  ) {
     SwiperCore.use([Navigation, Autoplay]);
   }
 
   ngAfterViewInit(): void {
-    const breakpoints = this.getBreakpoints();
-    this.initSlider(breakpoints);
-  }
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-  private initSlider(breakpoints: Breakpoint): Swiper {
-    return new Swiper(this.elementRef.nativeElement, {
+    const breakpoints = this.getBreakpoints();
+
+    const swiper = new Swiper(this.elementRef.nativeElement, {
       loop: true,
       autoplay: {
         delay: this.delay,
@@ -48,9 +55,11 @@ export class InfiniteLoopSliderComponent implements AfterViewInit {
   }
 
   private getBreakpoints(): Breakpoint {
-    return this.breakpoints.size
-      ? this.transformToBreakpoint(this.breakpoints)
-      : this.transformToBreakpoint(this.defaultBreakPoints);
+    const breakpoints = this.breakpoints.size
+      ? this.breakpoints
+      : this.defaultBreakPoints;
+
+    return this.transformToBreakpoint(breakpoints);
   }
 
   private transformToBreakpoint(breakpoints: Map<number, number>): Breakpoint {

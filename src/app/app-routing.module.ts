@@ -12,6 +12,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./customers/customers.module').then((m) => m.CustomersModule),
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
