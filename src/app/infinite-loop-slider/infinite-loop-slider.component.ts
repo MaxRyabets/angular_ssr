@@ -18,6 +18,14 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./infinite-loop-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+/**
+ * Represents a infinite loop slider
+ * @constructor
+ * @param {ElementRef} elementRef - The element reference of the component
+ * @param {any} platformId - The platformId of the server/browser platform
+ *
+ */
 export class InfiniteLoopSliderComponent implements AfterViewInit {
   private readonly defaultBreakPoints = new Map([
     [576, 1],
@@ -27,7 +35,14 @@ export class InfiniteLoopSliderComponent implements AfterViewInit {
     [1200, 5],
   ]);
 
+  /**
+   * This are breakpoints which the user set for swiper responsive.
+   * If user doesn't set then use default breakpoint.
+   */
   @Input() breakpoints: Map<number, number>;
+  /**
+   * This is delay which the user set for delay between slide changes.
+   */
   @Input() delay: number;
 
   constructor(
